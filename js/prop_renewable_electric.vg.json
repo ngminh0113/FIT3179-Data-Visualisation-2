@@ -1,0 +1,119 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "width": "container",
+    "background": "#f4f4f4",
+    "title": {
+      "text": "Proportion of Renewable Electricity generation by State and Territory",  
+      "anchor": "middle",
+      "dy": -10,
+      "font": "Josefin Sans"
+      },
+    "data": {
+      "url": "https://raw.githubusercontent.com/ngminh0113/FIT3179-Data-Visualisation-2/8b14c6227b17da4fa784ea6f50eaecf29575b9ff/data/Change_in_proportion_electricity_generation_longer.csv"
+    },
+    "transform": [
+      {
+        "filter": {
+          "field": "Year",
+          "oneOf": [
+            2009,
+            2016,
+            2023
+          ]
+        }
+      }
+    ],
+    "encoding": {
+      "y": {
+        "field": "Percentage",
+        "type": "quantitative",
+        "axis": {
+          "title": "Percentage",
+          "titleFont": "Josefin Sans",   
+          "titleFontSize": 14,          
+          "labelFont": "Josefin Sans",  
+          "labelFontSize": 12       
+          }
+      },
+      "x": {
+        "field": "State",
+        "type": "nominal",
+        "axis": {
+          "title": "State and Territory",
+          "titleFont": "Josefin Sans",   
+          "titleFontSize": 14,          
+          "labelFont": "Josefin Sans",  
+          "labelFontSize": 12 ,
+          "labelAngle": 0      
+          }
+      }
+    },
+    "layer": [
+      {
+        "mark": "line",
+        "encoding": {
+          "detail": {
+            "field": "State",
+            "type": "nominal"
+          },
+          "color": {
+            "value": "black"   
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "point",
+          "filled": true
+        },
+        "encoding": {
+          "color": {
+            "field": "Year",
+            "type": "ordinal",
+            "scale": {
+              "domain": [
+                2009,
+                2016,
+                2023
+              ],
+              "range": ["#a6a6a6", "#e4b6a7", "#ae1b30"]
+            },
+            "title": "Year"
+          },
+          "tooltip": [
+            {
+              "field": "Year",
+              "type": "quantitative"
+            },
+            {
+              "field": "State",
+              "type": "nominal",
+              "title": "State or Territory"
+            },
+            {
+              "field": "Percentage",
+              "type": "quantitative",
+              "title": "Percentage"
+            }
+          ],
+          "size": {
+            "value": 70
+          },
+          "opacity": {
+            "value": 1
+          }
+        }
+      }
+    ],
+    "view": {
+        "stroke": null  
+        },
+      "config": {"legend": {
+            "titleFont": "Josefin Sans",
+            "titleFontSize": 14,
+            "labelFont": "Josefin Sans",
+            "labelFontSize": 12
+          }
+        }
+  }
+  

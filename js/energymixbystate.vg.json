@@ -35,7 +35,7 @@
       "field": "State",
       "type": "nominal",
       "axis": {
-        "title": "State",
+        "title": "State and Territory",
         "titleFont": "Josefin Sans",   
         "titleFontSize": 14,          
         "labelFont": "Josefin Sans",  
@@ -46,12 +46,12 @@
       "field": "Fuel Type",
       "type": "nominal",
       "scale": {
-        "range": ["#a6a6a6","#e4b6a7","#ae1b30", "#66CDAA"]
+        "range": ["#a6a6a6","#e4b6a7","#ae1b30", "#2ba47c"]
       },
       "legend": {"title": "Fuel Type"}
     },
     "tooltip": [
-      {"field": "State", "type": "nominal", "title": "State"},
+      {"field": "State", "type": "nominal", "title": "State or Territory"},
       {"field": "Fuel Type", "type": "nominal", "title": "Fuel Type"},
       {"field": "Percentage", "type": "quantitative", "title": "Percentage"}
     ]
