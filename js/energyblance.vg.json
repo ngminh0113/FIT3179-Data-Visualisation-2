@@ -1,0 +1,66 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "background": "#f4f4f4",
+    "title": {
+      "text": "Energy consumption mix by State and Territory",  
+      "anchor": "middle",
+      "dy": -10,
+      "font": "Josefin Sans"
+      },
+    "data": {
+      "url": "https://raw.githubusercontent.com/ngminh0113/FIT3179-Data-Visualisation-2/ac8810ed897e276f055ebd8b8d69b1a577c707e6/data/General_energy_consumption_export_longer.csv"
+    },
+    "mark": "area",
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "timeUnit": "year",
+        "axis": {
+          "title": "", 
+          "tickCount": 10, 
+          "grid": false,
+          "titleFont": "Josefin Sans",   
+          "titleFontSize": 14,          
+          "labelFont": "Josefin Sans",  
+          "labelFontSize": 12 
+        }
+      },
+      "y": {
+        "aggregate": "sum", 
+        "field": "Energy Units (PJ)",
+        "axis": {
+          "title": "Percentage",
+          "titleFont": "Josefin Sans",   
+          "titleFontSize": 14,          
+          "labelFont": "Josefin Sans",  
+          "labelFontSize": 12       
+          }
+      },
+      "color": {
+        "field": "Purpose",
+        "scale": {"range": ["#918f8f","#ae1b30"]}
+      },
+      "tooltip": [
+        {"field": "Year", "timeUnit": "year", "title": "Year"},
+        {"field": "Purpose", "type": "nominal", "title": "Purpose"},
+        {"field": "Energy Units (PJ)", "type": "quantitative", "title": "Energy Units (PJ)"}
+      ],
+      "order": {
+        "field": "Purpose",
+        "type": "nominal",
+        "sort": "ascending"
+      }
+    },
+    "view": {
+        "stroke": null  
+        },
+      "config": {"legend": {
+            "titleFont": "Josefin Sans",
+            "titleFontSize": 14,
+            "labelFont": "Josefin Sans",
+            "labelFontSize": 12
+          }
+        }
+  }
+  

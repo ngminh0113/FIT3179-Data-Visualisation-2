@@ -1,0 +1,133 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ngminh0113/FIT3179-Data-Visualisation-2/9b4e9a2f109d8dd2167636ccf01488f814427c14/data/Energy_consumption_by_sector_longer.csv"
+  },
+  "width": "container",
+  "background": "#f4f4f4",
+  "title": "Energy consumption by Sector in Australia",
+  "params": [
+    {
+      "name": "SectorFilter",
+      "value": null,
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Transport",
+          "Electricity Supply",
+          "Manufacturing",
+          "Mining",
+          "Residential",
+          "Commercial",
+          "Other"
+        ],
+        "labels": [
+          "All Sectors",
+          "Transport",
+          "Electricity Supply",
+          "Manufacturing",
+          "Mining",
+          "Residential",
+          "Commercial",
+          "Other"
+        ],
+        "name": "Select a sector: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "SectorFilter == null || datum.Sector == SectorFilter"
+    },
+     {
+      "aggregate": [
+        {"op": "sum", "field": "Consumption (PJ)", "as": "TotalConsumption"}
+      ],
+      "groupby": ["Sector", "Year"]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "timeUnit": "year",
+      "axis": {"title": "", 
+            "tickCount": 10, 
+            "grid": false,
+            "labelFont": "Josefin Sans",  
+            "labelFontSize": 12 
+            }
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "TotalConsumption",
+      "type": "quantitative",
+      "axis": {
+          "title": "Consumption (PJ)",
+          "titleFont": "Josefin Sans",   
+          "titleFontSize": 14,          
+          "labelFont": "Josefin Sans",  
+          "labelFontSize": 12
+          }
+    },
+    "color": {
+      "field": "Sector",
+      "type": "nominal",
+      "scale": {
+    "domain": ["Commercial", "Electricity Supply", "Manufacturing", "Mining", "Other", "Residential", "Transport"],
+    "range": ["#6b8ebd", "#f1943c", "#d87060", "#95c4c1", "#88b378", "#dbc95b", "#b395b4"]
+  }
+    },
+    "tooltip": [
+      {"field": "Year", "timeUnit": "year", "title": "Year"},
+      {"field": "Sector", "type": "nominal", "title": "Sector"},
+      {"field": "TotalConsumption", "type": "quantitative", "title": "Consumption (MWh)"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": "line"
+    },
+    {
+      "mark": {
+        "type": "point", 
+        "filled": true,
+        "size": 20
+      }
+    },
+    {
+      "transform": [
+        {
+          "window": [{"op": "rank", "as": "ranking"}],
+          "sort": [{"field": "TotalConsumption", "order": "descending"}]
+        },
+        {"filter": "datum.ranking == 1"},
+        {
+          "calculate": "SectorFilter === null ? 'The sector with the highest energy consumption is ' + datum['Sector'] : 'The year with the highest energy consumption for the selected sector is: ' + year(datum['Year'])",
+          "as": "text_annotation"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -5,
+        "dy": -5,
+        "baseline": "middle",
+        "fontStyle": "italic",
+        "fontSize": 9,
+        "color": "blue" 
+      },
+      "encoding": {
+        "text": {"field": "text_annotation"}
+      }
+    }
+  ],
+  "config": 
+    {"legend": {
+            "titleFont": "Josefin Sans",
+            "titleFontSize": 14,
+            "labelFont": "Josefin Sans",
+            "labelFontSize": 12
+        }
+      }
+}
