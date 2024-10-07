@@ -5,7 +5,12 @@
   },
   "width": "container",
   "background": "#f4f4f4",
-  "title": "Energy consumption by Sector in Australia",
+  "title": {
+    "text":"Energy consumption by Sector",  
+    "anchor": "middle",
+    "dy": -10,
+    "font": "Josefin Sans"
+    },
   "params": [
     {
       "name": "SectorFilter",
@@ -114,8 +119,7 @@
         "dy": -5,
         "baseline": "middle",
         "fontStyle": "italic",
-        "fontSize": 9,
-        "color": "blue" 
+        "fontSize": 10
       },
       "encoding": {
         "text": {"field": "text_annotation"}

@@ -30,7 +30,7 @@
         "aggregate": "sum", 
         "field": "Energy Units (PJ)",
         "axis": {
-          "title": "Percentage",
+          "title": "Energy Units (PJ)",
           "titleFont": "Josefin Sans",   
           "titleFontSize": 14,          
           "labelFont": "Josefin Sans",  

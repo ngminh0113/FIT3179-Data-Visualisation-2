@@ -68,7 +68,7 @@
           "size": {
             "field": "generationmw",
             "type": "quantitative",
-            "title": "Energy Generation (MW)",
+            "title": "Energy Capacity (MW)",
             "scale": {"domain": [0.01, 2880]}
           },
           "color": {
@@ -79,7 +79,7 @@
           },
           "tooltip": [
           {"field": "name", "type": "nominal", "title": "Power Plant Name"},
-          {"field": "generationmw", "type": "quantitative", "title": "Energy Generation (MW)"}, 
+          {"field": "generationmw", "type": "quantitative", "title": "Energy Capacity (MW)"}, 
           {"field": "class", "type": "nominal", "title": "Energy Type"},
           {"field": "generatornumber", "type": "quantitative", "title": "Number of Generators"}
         ]
