@@ -17,6 +17,13 @@
       "as": "signed_percentage"
     }
   ],
+  "params":[
+        {
+        "name": "fuel_highlight",
+        "select": {"type": "point", "fields": ["Fuel Type"]},
+        "bind": "legend"
+        }
+  ],
   "mark": "bar",
   "encoding": {
     "x": {
@@ -49,6 +56,10 @@
         "range": ["#a6a6a6","#e4b6a7","#ae1b30", "#2ba47c"]
       },
       "legend": {"title": "Fuel Type"}
+    },
+    "opacity": {
+      "condition": {"param": "fuel_highlight", "value": 1},
+      "value": 0.1
     },
     "tooltip": [
       {"field": "State", "type": "nominal", "title": "State or Territory"},

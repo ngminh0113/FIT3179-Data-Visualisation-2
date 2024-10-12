@@ -1,66 +1,95 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": "container",
-    "background": "#f4f4f4",
-    "title": {
-      "text": "Energy Balance",  
-      "anchor": "middle",
-      "dy": -10,
-      "font": "Josefin Sans"
-      },
-    "data": {
-      "url": "https://raw.githubusercontent.com/ngminh0113/FIT3179-Data-Visualisation-2/ac8810ed897e276f055ebd8b8d69b1a577c707e6/data/General_energy_consumption_export_longer.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "background": "#f4f4f4",
+  "title": {
+    "text": "Energy Balance",  
+    "anchor": "middle",
+    "dy": -10,
+    "font": "Josefin Sans"
     },
-    "mark": "area",
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "timeUnit": "year",
-        "axis": {
-          "title": "", 
-          "tickCount": 10, 
-          "grid": false,
-          "titleFont": "Josefin Sans",   
-          "titleFontSize": 14,          
-          "labelFont": "Josefin Sans",  
-          "labelFontSize": 12 
-        }
-      },
-      "y": {
-        "aggregate": "sum", 
-        "field": "Energy Units (PJ)",
-        "axis": {
-          "title": "Energy Units (PJ)",
-          "titleFont": "Josefin Sans",   
-          "titleFontSize": 14,          
-          "labelFont": "Josefin Sans",  
-          "labelFontSize": 12       
-          }
-      },
-      "color": {
-        "field": "Purpose",
-        "scale": {"range": ["#918f8f","#ae1b30"]}
-      },
-      "tooltip": [
-        {"field": "Year", "timeUnit": "year", "title": "Year"},
-        {"field": "Purpose", "type": "nominal", "title": "Purpose"},
-        {"field": "Energy Units (PJ)", "type": "quantitative", "title": "Energy Units (PJ)"}
-      ],
-      "order": {
-        "field": "Purpose",
-        "type": "nominal",
-        "sort": "ascending"
+  "data": {
+    "url": "https://raw.githubusercontent.com/ngminh0113/FIT3179-Data-Visualisation-2/ac8810ed897e276f055ebd8b8d69b1a577c707e6/data/General_energy_consumption_export_longer.csv"
+  },
+  "params": [
+    {
+      "name": "highlight",
+      "select": {"type": "point", "on": "pointerover"}
+    },
+    {"name": "select", "select": "point"}
+  ],
+  "mark": {
+  "type": "area",
+  "stroke": "black",
+  "cursor": "pointer"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "timeUnit": "year",
+      "axis": {
+        "title": "", 
+        "tickCount": 10, 
+        "grid": false,
+        "titleFont": "Josefin Sans",   
+        "titleFontSize": 14,          
+        "labelFont": "Josefin Sans",  
+        "labelFontSize": 12 
       }
     },
-    "view": {
-        "stroke": null  
-        },
-      "config": {"legend": {
-            "titleFont": "Josefin Sans",
-            "titleFontSize": 14,
-            "labelFont": "Josefin Sans",
-            "labelFontSize": 12
-          }
+    "y": {
+      "aggregate": "sum", 
+      "field": "Energy Units (PJ)",
+      "axis": {
+        "title": "Energy Units (PJ)",
+        "titleFont": "Josefin Sans",   
+        "titleFontSize": 14,          
+        "labelFont": "Josefin Sans",  
+        "labelFontSize": 12       
         }
-  }
-  
+    },
+    "fillOpacity": {
+    "condition": {"param": "select", "value": 1},
+    "value": 0.3
+    },
+    "strokeWidth": {
+      "condition": [
+        {
+          "param": "select",
+          "empty": false,
+          "value": 2
+        },
+        {
+          "param": "highlight",
+          "empty": false,
+          "value": 1
+        }
+    ],
+    "value": 0
+  },
+    "color": {
+      "field": "Purpose",
+      "scale": {"range": ["#918f8f","#ae1b30"]}
+    },
+    "tooltip": [
+      {"field": "Year", "timeUnit": "year", "title": "Year"},
+      {"field": "Purpose", "type": "nominal", "title": "Purpose"},
+      {"field": "Energy Units (PJ)", "type": "quantitative", "title": "Energy Units (PJ)"}
+    ],
+    "order": {
+      "field": "Purpose",
+      "type": "nominal",
+      "sort": "ascending"
+    }
+  },
+  "view": {
+      "stroke": null  
+      },
+    "config": {"legend": {
+          "titleFont": "Josefin Sans",
+          "titleFontSize": 14,
+          "labelFont": "Josefin Sans",
+          "labelFontSize": 12
+        }
+      }
+}

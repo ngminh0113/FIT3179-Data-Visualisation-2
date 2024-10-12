@@ -117,9 +117,10 @@
         "align": "right",
         "dx": -5,
         "dy": -5,
+        "font": "Josefin Sans",
         "baseline": "middle",
         "fontStyle": "italic",
-        "fontSize": 10
+        "fontSize": 12
       },
       "encoding": {
         "text": {"field": "text_annotation"}
