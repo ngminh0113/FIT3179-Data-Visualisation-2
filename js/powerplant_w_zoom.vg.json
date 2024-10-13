@@ -42,7 +42,7 @@
   "layer": [    
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/ngminh0113/FIT3179-Data-Visualisation-2/1ccb0062187bcafde78c2d03ebc45608c85e0704/js/STE_2021_AUST_GDA2020.topojson",
+        "url": "https://raw.githubusercontent.com/ngminh0113/FIT3179-Data-Visualisation-2/b30ab7dfefe737509ec609552fbe148468654b8f/js/STE_2021_AUST_GDA2020.topojson",
         "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA2020"}
       },
       "mark": {"type": "geoshape", "fill": "white", "stroke": "black"},
